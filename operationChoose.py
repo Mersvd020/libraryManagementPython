@@ -1,25 +1,36 @@
 from bookManageEngine import *
 import sys
-#from main import library_Manager;
+
+from bookManageEngine import fileHandler
+
 
 def chooseOperate(num):
+    jsonHandler = fileHandler();
+    print(num + "num value");
+    menu ={
+       1:ShowBookList(jsonHandler),
+       2:AddBook(jsonHandler),
 
-  def add_book():
-    
-    title = input("book name:");
-    author = input("author name:");
-    year = input("year:");
-    
+    }
+    menu[int(num)].action();
 
-    if title and author and year:
-        AddBook(title,author,year);
+    def menuHandler():
+        Inp = input("retun main menu? (y/n)");
+
+        if Inp.lower() == "y":
+            import main
+            return main.library_Manager();
+        elif Inp.lower() == "n":
+            print("exiting book management")
+            sys.exit();
+        else:
+            return menuHandler();
+    
+    menuHandler();    
+  
         
-    else:
-        print("please fill all input");
-        sys.exit();
-
-  if num == "1":
-      add_book();
+ 
+     
  
      
     
